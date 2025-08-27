@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import emailjs from '@emailjs/browser';
 import { 
     faEnvelope, 
     faPhone, 
@@ -55,12 +56,25 @@ const Contact = () => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        // Simulación de envío de formulario
         try {
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            // Configuración de EmailJS
+            const serviceID = 'YOUR_SERVICE_ID'; // Reemplaza con tu Service ID
+            const templateID = 'YOUR_TEMPLATE_ID'; // Reemplaza con tu Template ID
+            const publicKey = 'YOUR_PUBLIC_KEY'; // Reemplaza con tu Public Key
+
+            const templateParams = {
+                from_name: formData.name,
+                from_email: formData.email,
+                message: formData.message,
+                to_email: 'oviedojonathan2001@gmail.com'
+            };
+
+            await emailjs.send(serviceID, templateID, templateParams, publicKey);
+            
             setSubmitStatus('success');
             setFormData({ name: '', email: '', message: '' });
         } catch (error) {
+            console.error('Error sending email:', error);
             setSubmitStatus('error');
         } finally {
             setIsSubmitting(false);
@@ -283,7 +297,7 @@ const Contact = () => {
                 <div className="contact-cta-section">
                     <div className="cta-content-wrapper">
                         <h3 className="cta-title-text">{t.contact.cta.title}</h3>
-                        <p className="cta-description-text">
+                        <p className="cta-description-text" style={{ marginBottom: '2rem' }}>
                             {t.contact.cta.description}
                         </p>
                         <div className="cta-buttons-container">
