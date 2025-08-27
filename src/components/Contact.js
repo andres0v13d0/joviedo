@@ -1,7 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faPhone, faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
+import { 
+    faEnvelope, 
+    faPhone, 
+    faMapMarkedAlt, 
+    faSpinner, 
+    faPaperPlane, 
+    faCheckCircle, 
+    faExclamationCircle,
+    faEye 
+} from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedinIn, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import './Contact.css';
 
@@ -77,7 +86,7 @@ const Contact = () => {
         {
             icon: faMapMarkedAlt,
             title: t.contact.location,
-            value: 'Ecuador', // Cambia por tu ubicación real
+            value: 'Cali, Colombia', // Cambia por tu ubicación real
             link: '#',
             color: '#578828'
         }
@@ -124,10 +133,9 @@ const Contact = () => {
                 <div className={`contact-content-grid ${isVisible ? 'content-visible' : ''}`}>
                     <div className="contact-info-container">
                         <div className="contact-intro-section">
-                            <h3 className="intro-title-text">¡Trabajemos Juntos!</h3>
+                            <h3 className="intro-title-text">{t.contact.intro.title}</h3>
                             <p className="intro-description-text">
-                                ¿Tienes un proyecto en mente? ¿Necesitas ayuda con desarrollo web?
-                                ¡Me encantaría conocer más sobre tu idea y cómo puedo ayudarte a hacerla realidad!
+                                {t.contact.intro.description}
                             </p>
                         </div>
 
@@ -180,9 +188,9 @@ const Contact = () => {
 
                     <div className="contact-form-container">
                         <div className="form-header-section">
-                            <h3 className="form-title-text">Envíame un Mensaje</h3>
+                            <h3 className="form-title-text">{t.contact.form.title}</h3>
                             <p className="form-subtitle-text">
-                                Completa el formulario y te responderé lo más pronto posible
+                                {t.contact.form.subtitle}
                             </p>
                         </div>
 
@@ -242,12 +250,12 @@ const Contact = () => {
                             >
                                 {isSubmitting ? (
                                     <>
-                                        <i className="fas fa-spinner fa-spin"></i>
-                                        Enviando...
+                                        <FontAwesomeIcon icon={faSpinner} spin />
+                                        {t.contact.form.sending}
                                     </>
                                 ) : (
                                     <>
-                                        <i className="fas fa-paper-plane"></i>
+                                        <FontAwesomeIcon icon={faPaperPlane} />
                                         {t.contact.form.send}
                                     </>
                                 )}
@@ -257,13 +265,13 @@ const Contact = () => {
                                 <div className={`form-status-message ${submitStatus === 'success' ? 'status-success' : 'status-error'}`}>
                                     {submitStatus === 'success' ? (
                                         <>
-                                            <i className="fas fa-check-circle"></i>
-                                            ¡Mensaje enviado exitosamente! Te responderé pronto.
+                                            <FontAwesomeIcon icon={faCheckCircle} />
+                                            {t.contact.form.success}
                                         </>
                                     ) : (
                                         <>
-                                            <i className="fas fa-exclamation-circle"></i>
-                                            Hubo un error al enviar el mensaje. Intenta nuevamente.
+                                            <FontAwesomeIcon icon={faExclamationCircle} />
+                                            {t.contact.form.error}
                                         </>
                                     )}
                                 </div>
@@ -274,18 +282,18 @@ const Contact = () => {
 
                 <div className="contact-cta-section">
                     <div className="cta-content-wrapper">
-                        <h3 className="cta-title-text">¿Listo para empezar tu proyecto?</h3>
+                        <h3 className="cta-title-text">{t.contact.cta.title}</h3>
                         <p className="cta-description-text">
-                            Trabajemos juntos para crear algo increíble. Desde la idea inicial hasta el producto final.
+                            {t.contact.cta.description}
                         </p>
                         <div className="cta-buttons-container">
                             <a href="#projects" className="cta-primary-button">
-                                <i className="fas fa-eye"></i>
-                                Ver Mi Trabajo
+                                <FontAwesomeIcon icon={faEye} />
+                                {t.contact.cta.viewWork}
                             </a>
-                            <a href="mailto:tu-email@ejemplo.com" className="cta-secondary-button">
-                                <i className="fas fa-envelope"></i>
-                                Contactar Ahora
+                            <a href="mailto:oviedojonathan2001@gmail.com" className="cta-secondary-button">
+                                <FontAwesomeIcon icon={faEnvelope} />
+                                {t.contact.cta.contactNow}
                             </a>
                         </div>
                     </div>

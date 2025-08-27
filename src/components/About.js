@@ -59,14 +59,25 @@ const About = () => {
                         </div>
 
                         <div className="stats-showcase-grid">
-                            {t.about.stats.map((stat, index) => (
-                                <div key={index} className="stat-item-card">
-                                    <div className="stat-number-display">
-                                        <span className="stat-count">{stat.number}</span>
+                            {t.about.stats && t.about.stats.map((stat, index) => {
+                                // Extraer el número para la animación
+                                const numericValue = parseInt(stat.number.replace(/[^0-9]/g, '')) || 0;
+                                
+                                return (
+                                    <div key={index} className="stat-item-card">
+                                        <div className="stat-number-display">
+                                            <span 
+                                                className="stat-count" 
+                                                data-count={numericValue}
+                                                data-original={stat.number}
+                                            >
+                                                {stat?.number || '0'}
+                                            </span>
+                                        </div>
+                                        <div className="stat-label-text">{stat?.label || 'N/A'}</div>
                                     </div>
-                                    <div className="stat-label-text">{stat.label}</div>
-                                </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     </div>
 

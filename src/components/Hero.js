@@ -97,7 +97,7 @@ const Hero = () => {
                         <a href="https://linkedin.com/in/andres0viedo" target="_blank" rel="noopener noreferrer" className="social-link-item" aria-label="LinkedIn">
                             <FontAwesomeIcon icon={faLinkedin} />
                         </a>
-                        <a href="https://wa.me/+573016643479" target="_blank" rel="noopener noreferrer" className="social-link-item" aria-label="WhatsApp">
+                        <a href="https://wa.me/573016643479" target="_blank" rel="noopener noreferrer" className="social-link-item" aria-label="WhatsApp">
                             <FontAwesomeIcon icon={faWhatsapp} />
                         </a>
                         <a href="mailto:oviedojonathan2001@gmail.com" className="social-link-item" aria-label="Email">
@@ -125,7 +125,6 @@ const Hero = () => {
             </div>
 
             <div className="scroll-indicator">
-                <span className="scroll-text">Scroll</span>
                 <div className="scroll-arrow">
                     <FontAwesomeIcon icon={faChevronDown} />
                 </div>

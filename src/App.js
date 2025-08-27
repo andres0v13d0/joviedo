@@ -18,18 +18,27 @@ function App() {
 
       counters.forEach(counter => {
         const target = parseInt(counter.getAttribute('data-count'));
+        const originalText = counter.getAttribute('data-original');
         const duration = 2000;
         const increment = target / (duration / 16);
         let current = 0;
 
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            current = target;
-            clearInterval(timer);
-          }
-          counter.textContent = Math.floor(current);
-        }, 16);
+        // Solo animar si hay un valor numérico válido
+        if (!isNaN(target) && target > 0) {
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              current = target;
+              clearInterval(timer);
+              // Restaurar el texto original al final de la animación
+              counter.textContent = originalText;
+            } else {
+              // Obtener el sufijo del texto original (+ o %)
+              const suffix = originalText.replace(/[0-9]/g, '');
+              counter.textContent = Math.floor(current) + suffix;
+            }
+          }, 16);
+        }
       });
     };
 

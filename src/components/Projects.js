@@ -1,5 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+    faLayerGroup, 
+    faCode, 
+    faMobileScreen, 
+    faEye,
+    faExternalLinkAlt,
+    faArrowRight,
+    faTimes,
+    faBuilding,
+    faUser,
+    faClock,
+    faCheck
+} from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import './Projects.css';
 
 const Projects = () => {
@@ -26,147 +41,13 @@ const Projects = () => {
         return () => observer.disconnect();
     }, []);
 
-    // Datos de proyectos - Aquí puedes agregar tus proyectos reales
-    const projectsData = [
-        {
-            id: 1,
-            title: 'E-Commerce Platform',
-            category: 'web',
-            company: 'TechCorp Solutions',
-            client: 'Retail Company',
-            description: 'Plataforma completa de e-commerce con sistema de pagos integrado, gestión de inventario y panel administrativo.',
-            longDescription: 'Desarrollé una plataforma de e-commerce completa desde cero, incluyendo frontend responsivo, backend robusto, integración con pasarelas de pago, sistema de gestión de inventario en tiempo real, y un panel administrativo completo para gestionar productos, órdenes y usuarios.',
-            image: '/placeholder-project.jpg',
-            liveUrl: 'https://ejemplo-ecommerce.com',
-            technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redux'],
-            features: [
-                'Sistema de autenticación completo',
-                'Carrito de compras con persistencia',
-                'Integración con múltiples pasarelas de pago',
-                'Panel administrativo con analytics',
-                'Sistema de notificaciones en tiempo real'
-            ],
-            year: '2023',
-            status: 'Completado',
-            duration: '4 meses'
-        },
-        {
-            id: 2,
-            title: 'Dashboard Analytics',
-            category: 'dashboard',
-            company: 'DataViz Agency',
-            client: 'Marketing Firm',
-            description: 'Dashboard interactivo para visualización de datos de marketing con gráficos en tiempo real y reportes automáticos.',
-            longDescription: 'Creé un dashboard completo para análisis de datos de marketing que permite visualizar métricas en tiempo real, generar reportes automáticos, y proporcionar insights accionables para optimizar campañas publicitarias.',
-            image: '/placeholder-project.jpg',
-            liveUrl: 'https://ejemplo-dashboard.com',
-            technologies: ['Vue.js', 'D3.js', 'Express.js', 'PostgreSQL', 'Chart.js'],
-            features: [
-                'Visualización de datos en tiempo real',
-                'Gráficos interactivos personalizables',
-                'Generación automática de reportes PDF',
-                'Sistema de alertas configurables',
-                'Integración con múltiples APIs'
-            ],
-            year: '2023',
-            status: 'Completado',
-            duration: '3 meses'
-        },
-        {
-            id: 3,
-            title: 'Medical App',
-            category: 'mobile',
-            company: 'HealthTech StartUp',
-            client: 'Medical Center',
-            description: 'Aplicación móvil para gestión de citas médicas, historial clínico y comunicación paciente-doctor.',
-            longDescription: 'Desarrollé una aplicación móvil completa para el sector salud que permite a los pacientes gestionar sus citas, acceder a su historial médico, y mantener comunicación directa con sus doctores de manera segura y eficiente.',
-            image: '/placeholder-project.jpg',
-            liveUrl: 'https://ejemplo-medical-app.com',
-            technologies: ['React Native', 'Firebase', 'Node.js', 'Socket.io'],
-            features: [
-                'Gestión de citas en tiempo real',
-                'Historial médico digitalizado',
-                'Chat seguro paciente-doctor',
-                'Notificaciones push personalizadas',
-                'Integración con sistemas hospitalarios'
-            ],
-            year: '2022',
-            status: 'Completado',
-            duration: '5 meses'
-        },
-        {
-            id: 4,
-            title: 'Portfolio Website',
-            category: 'web',
-            company: 'Freelance',
-            client: 'Creative Agency',
-            description: 'Sitio web portfolio moderno con animaciones avanzadas y diseño responsivo para agencia creativa.',
-            longDescription: 'Diseñé y desarrollé un sitio web portfolio impactante para una agencia creativa, con animaciones CSS avanzadas, transiciones suaves, y un diseño completamente responsivo que destaca el trabajo de la agencia.',
-            image: '/placeholder-project.jpg',
-            liveUrl: 'https://ejemplo-portfolio.com',
-            technologies: ['HTML5', 'CSS3', 'JavaScript', 'GSAP', 'Sass'],
-            features: [
-                'Animaciones CSS avanzadas',
-                'Diseño responsivo optimizado',
-                'Galería de proyectos interactiva',
-                'Formulario de contacto funcional',
-                'Optimización SEO completa'
-            ],
-            year: '2022',
-            status: 'Completado',
-            duration: '2 meses'
-        },
-        {
-            id: 5,
-            title: 'Learning Management System',
-            category: 'web',
-            company: 'EduTech Solutions',
-            client: 'University',
-            description: 'Plataforma educativa completa con cursos online, evaluaciones automáticas y seguimiento de progreso.',
-            longDescription: 'Desarrollé una plataforma LMS completa que permite a instituciones educativas ofrecer cursos online, realizar evaluaciones automáticas, hacer seguimiento del progreso estudiantil, y facilitar la comunicación entre profesores y alumnos.',
-            image: '/placeholder-project.jpg',
-            liveUrl: 'https://ejemplo-lms.com',
-            technologies: ['Angular', 'Spring Boot', 'MySQL', 'AWS', 'Docker'],
-            features: [
-                'Sistema de cursos multimedia',
-                'Evaluaciones automáticas con IA',
-                'Seguimiento de progreso detallado',
-                'Foros de discusión integrados',
-                'Certificaciones digitales'
-            ],
-            year: '2023',
-            status: 'En desarrollo',
-            duration: '6 meses'
-        },
-        {
-            id: 6,
-            title: 'Restaurant Management',
-            category: 'web',
-            company: 'FoodTech Solutions',
-            client: 'Restaurant Chain',
-            description: 'Sistema de gestión integral para restaurantes con POS, inventario, reservas y delivery.',
-            longDescription: 'Creé un sistema completo de gestión para restaurantes que incluye punto de venta (POS), control de inventario, gestión de reservas, sistema de delivery, y analytics para optimizar operaciones.',
-            image: '/placeholder-project.jpg',
-            liveUrl: 'https://ejemplo-restaurant.com',
-            technologies: ['React', 'Python', 'Django', 'Redis', 'PayPal API'],
-            features: [
-                'Sistema POS integrado',
-                'Control de inventario automático',
-                'Gestión de reservas online',
-                'Plataforma de delivery',
-                'Analytics y reportes detallados'
-            ],
-            year: '2023',
-            status: 'Completado',
-            duration: '4 meses'
-        }
-    ];
+    // Usar proyectos del contexto de idioma
+    const projectsData = t.projects.projectsList;
 
     const categories = [
-        { id: 'all', name: 'Todos', icon: 'fas fa-th' },
-        { id: 'web', name: 'Web Apps', icon: 'fas fa-globe' },
-        { id: 'mobile', name: 'Mobile Apps', icon: 'fas fa-mobile-alt' },
-        { id: 'dashboard', name: 'Dashboards', icon: 'fas fa-chart-bar' }
+        { id: 'all', name: t.projects.categories.all, icon: faLayerGroup },
+        { id: 'web', name: t.projects.categories.web, icon: faCode },
+        { id: 'mobile', name: t.projects.categories.mobile, icon: faMobileScreen },
     ];
 
     const filteredProjects = selectedCategory === 'all'
@@ -201,7 +82,7 @@ const Projects = () => {
                             className={`filter-category-button ${selectedCategory === category.id ? 'filter-active' : ''}`}
                             onClick={() => setSelectedCategory(category.id)}
                         >
-                            <i className={category.icon}></i>
+                            <FontAwesomeIcon icon={category.icon} />
                             <span>{category.name}</span>
                         </button>
                     ))}
@@ -220,17 +101,32 @@ const Projects = () => {
                                 <div className="project-overlay-content">
                                     <div className="overlay-icons-section">
                                         <button className="overlay-action-button">
-                                            <i className="fas fa-eye"></i>
+                                            <FontAwesomeIcon icon={faEye} />
                                         </button>
-                                        <a
-                                            href={project.liveUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="overlay-action-button"
-                                            onClick={(e) => e.stopPropagation()}
-                                        >
-                                            <i className="fas fa-external-link-alt"></i>
-                                        </a>
+                                        {project.githubUrl && (
+                                            <a
+                                                href={project.githubUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="overlay-action-button"
+                                                onClick={(e) => e.stopPropagation()}
+                                                title="Ver código en GitHub"
+                                            >
+                                                <FontAwesomeIcon icon={faGithub} />
+                                            </a>
+                                        )}
+                                        {project.liveUrl && (
+                                            <a
+                                                href={project.liveUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="overlay-action-button"
+                                                onClick={(e) => e.stopPropagation()}
+                                                title="Ver proyecto en vivo"
+                                            >
+                                                <FontAwesomeIcon icon={faExternalLinkAlt} />
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -240,7 +136,7 @@ const Projects = () => {
                                     <h3 className="project-title-text">{project.title}</h3>
                                     <div className="project-meta-info">
                                         <span className="project-company-text">
-                                            <i className="fas fa-building"></i>
+                                            <FontAwesomeIcon icon={faBuilding} />
                                             {project.company}
                                         </span>
                                         <span className="project-year-text">{project.year}</span>
@@ -262,11 +158,11 @@ const Projects = () => {
 
                                 <div className="project-actions-footer">
                                     <button className="view-details-button">
-                                        Ver Detalles
-                                        <i className="fas fa-arrow-right"></i>
+                                        {t.projects.viewDetails}
+                                        <FontAwesomeIcon icon={faArrowRight} />
                                     </button>
                                     <div className="project-status-badge">
-                                        <span className={`status-indicator ${project.status === 'Completado' ? 'status-completed' : 'status-progress'}`}></span>
+                                        <span className={`status-indicator ${project.status === 'Completado' || project.status === 'Completed' ? 'status-completed' : 'status-progress'}`}></span>
                                         {project.status}
                                     </div>
                                 </div>
@@ -280,7 +176,7 @@ const Projects = () => {
                     <div className="project-modal-overlay" onClick={closeProjectModal}>
                         <div className="project-modal-container" onClick={(e) => e.stopPropagation()}>
                             <button className="modal-close-button" onClick={closeProjectModal}>
-                                <i className="fas fa-times"></i>
+                                <FontAwesomeIcon icon={faTimes} />
                             </button>
 
                             <div className="modal-content-wrapper">
@@ -293,31 +189,31 @@ const Projects = () => {
                                         <h3 className="modal-project-title">{selectedProject.title}</h3>
                                         <div className="modal-project-meta">
                                             <span className="modal-company-info">
-                                                <i className="fas fa-building"></i>
+                                                <FontAwesomeIcon icon={faBuilding} />
                                                 {selectedProject.company}
                                             </span>
                                             <span className="modal-client-info">
-                                                <i className="fas fa-user"></i>
-                                                Cliente: {selectedProject.client}
+                                                <FontAwesomeIcon icon={faUser} />
+                                                {t.projects.client}: {selectedProject.client}
                                             </span>
                                             <span className="modal-duration-info">
-                                                <i className="fas fa-clock"></i>
-                                                Duración: {selectedProject.duration}
+                                                <FontAwesomeIcon icon={faClock} />
+                                                {t.projects.duration}: {selectedProject.duration}
                                             </span>
                                         </div>
                                     </div>
 
                                     <div className="modal-description-section">
-                                        <h4>Descripción del Proyecto</h4>
+                                        <h4>{t.projects.projectDescription}</h4>
                                         <p>{selectedProject.longDescription}</p>
                                     </div>
 
                                     <div className="modal-features-section">
-                                        <h4>Características Principales</h4>
+                                        <h4>{t.projects.keyFeatures}</h4>
                                         <ul className="features-list-container">
                                             {selectedProject.features.map((feature, idx) => (
                                                 <li key={idx} className="feature-item-text">
-                                                    <i className="fas fa-check"></i>
+                                                    <FontAwesomeIcon icon={faCheck} />
                                                     {feature}
                                                 </li>
                                             ))}
@@ -334,15 +230,28 @@ const Projects = () => {
                                     </div>
 
                                     <div className="modal-actions-section">
-                                        <a
-                                            href={selectedProject.liveUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="modal-action-button primary-action"
-                                        >
-                                            <i className="fas fa-external-link-alt"></i>
-                                            {t.projects.viewProject}
-                                        </a>
+                                        {selectedProject.githubUrl && (
+                                            <a
+                                                href={selectedProject.githubUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="modal-action-button secondary-action"
+                                            >
+                                                <FontAwesomeIcon icon={faGithub} />
+                                                {t.projects.viewCode}
+                                            </a>
+                                        )}
+                                        {selectedProject.liveUrl && (
+                                            <a
+                                                href={selectedProject.liveUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="modal-action-button primary-action"
+                                            >
+                                                <FontAwesomeIcon icon={faExternalLinkAlt} />
+                                                {t.projects.viewProject}
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
                             </div>

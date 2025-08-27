@@ -83,7 +83,7 @@ const Skills = () => {
                     <h2 className="section-main-title">{t.skills.title}</h2>
                     <div className="title-underline-accent"></div>
                     <p className="section-subtitle-text">
-                        Tecnologías y herramientas que utilizo para crear experiencias digitales excepcionales
+                        {t.skills.subtitle}
                     </p>
                 </div>
 
@@ -146,9 +146,9 @@ const Skills = () => {
                                 <FontAwesomeIcon icon={faGraduationCap} />
                             </div>
                             <div className="info-content-section">
-                                <h4 className="info-title-text">Aprendizaje Continuo</h4>
+                                <h4 className="info-title-text">{t.skills.additionalInfo.learning.title}</h4>
                                 <p className="info-description-text">
-                                    Siempre explorando nuevas tecnologías y mejores prácticas de desarrollo
+                                    {t.skills.additionalInfo.learning.description}
                                 </p>
                             </div>
                         </div>
@@ -158,9 +158,9 @@ const Skills = () => {
                                 <FontAwesomeIcon icon={faUsers} />
                             </div>
                             <div className="info-content-section">
-                                <h4 className="info-title-text">Trabajo en Equipo</h4>
+                                <h4 className="info-title-text">{t.skills.additionalInfo.teamwork.title}</h4>
                                 <p className="info-description-text">
-                                    Experiencia colaborando en equipos ágiles y multidisciplinarios
+                                    {t.skills.additionalInfo.teamwork.description}
                                 </p>
                             </div>
                         </div>
@@ -170,9 +170,9 @@ const Skills = () => {
                                 <FontAwesomeIcon icon={faRocket} />
                             </div>
                             <div className="info-content-section">
-                                <h4 className="info-title-text">Innovación</h4>
+                                <h4 className="info-title-text">{t.skills.additionalInfo.innovation.title}</h4>
                                 <p className="info-description-text">
-                                    Enfocado en crear soluciones innovadoras y eficientes
+                                    {t.skills.additionalInfo.innovation.description}
                                 </p>
                             </div>
                         </div>

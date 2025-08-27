@@ -4,11 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
     faBuilding, 
     faMapMarkerAlt, 
-    faStar, 
-    faBriefcase, 
-    faCode,  
-    faAward,
-    faLaptopCode, 
+    faStar,
 } from '@fortawesome/free-solid-svg-icons';
 import './Experience.css';
 
@@ -131,58 +127,6 @@ const Experience = () => {
                                 </div>
                             </div>
                         ))}
-                    </div>
-                </div>
-
-                <div className="experience-stats-section">
-                    <div className="stats-cards-grid">
-                        <div className="stat-card-item">
-                            <div className="stat-icon-wrapper">
-                                <FontAwesomeIcon icon={faBriefcase} />
-                            </div>
-                            <div className="stat-info-content">
-                                <div className="stat-number-text">2+</div>
-                                <div className="stat-label-text">
-                                    {language === 'es' ? 'Años de Experiencia' : 'Years of Experience'}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="stat-card-item">
-                            <div className="stat-icon-wrapper">
-                                <FontAwesomeIcon icon={faCode} />
-                            </div>
-                            <div className="stat-info-content">
-                                <div className="stat-number-text">10+</div>
-                                <div className="stat-label-text">
-                                    {language === 'es' ? 'Proyectos Completados' : 'Completed Projects'}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="stat-card-item">
-                            <div className="stat-icon-wrapper">
-                                <FontAwesomeIcon icon={faLaptopCode} />
-                            </div>
-                            <div className="stat-info-content">
-                                <div className="stat-number-text">8+</div>
-                                <div className="stat-label-text">
-                                    {language === 'es' ? 'Tecnologías Dominadas' : 'Mastered Technologies'}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="stat-card-item">
-                            <div className="stat-icon-wrapper">
-                                <FontAwesomeIcon icon={faAward} />
-                            </div>
-                            <div className="stat-info-content">
-                                <div className="stat-number-text">100%</div>
-                                <div className="stat-label-text">
-                                    {language === 'es' ? 'Compromiso' : 'Commitment'}
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

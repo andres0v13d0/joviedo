@@ -1,7 +1,15 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { 
+    faEnvelope, 
+    faPhone, 
+    faMapMarkerAlt, 
+    faChevronRight, 
+    faPaperPlane, 
+    faEye, 
+    faChevronUp 
+} from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import './Footer.css';
 
@@ -33,25 +41,25 @@ const Footer = () => {
         {
             name: 'GitHub',
             icon: faGithub,
-            url: 'https://github.com/jonathan-oviedo',
+            url: 'https://github.com/andres0v13d0',
             color: '#333333'
         },
         {
             name: 'LinkedIn',
             icon: faLinkedin,
-            url: 'https://linkedin.com/in/jonathan-oviedo',
+            url: 'https://linkedin.com/in/andres0viedo',
             color: '#0077B5'
         },
         {
             name: 'WhatsApp',
             icon: faWhatsapp,
-            url: 'https://wa.me/593991234567',
+            url: 'https://wa.me/573016643479',
             color: '#25D366'
         },
         {
             name: 'Email',
             icon: faEnvelope,
-            url: 'mailto:jonathan.oviedo@ejemplo.com',
+            url: 'mailto:oviedojonathan2001@gmail.com',
             color: '#C03C84'
         }
     ];
@@ -85,7 +93,7 @@ const Footer = () => {
                     </div>
 
                     <div className="footer-links-column">
-                        <h4 className="footer-column-title">Navegación Rápida</h4>
+                        <h4 className="footer-column-title">{t.footer.quickNavigation}</h4>
                         <ul className="footer-links-list">
                             {quickLinks.map((link, index) => (
                                 <li key={index} className="footer-link-item">
@@ -93,7 +101,7 @@ const Footer = () => {
                                         onClick={() => scrollToSection(link.id)}
                                         className="footer-nav-link"
                                     >
-                                        <i className="fas fa-chevron-right"></i>
+                                        <FontAwesomeIcon icon={faChevronRight} />
                                         {link.name}
                                     </button>
                                 </li>
@@ -102,40 +110,40 @@ const Footer = () => {
                     </div>
 
                     <div className="footer-contact-column">
-                        <h4 className="footer-column-title">Información de Contacto</h4>
+                        <h4 className="footer-column-title">{t.footer.contactInfo}</h4>
                         <div className="footer-contact-info">
                             <div className="contact-info-item">
-                                <i className="fas fa-envelope"></i>
-                                <a href="mailto:tu-email@ejemplo.com" className="contact-link">
-                                    tu-email@ejemplo.com
+                                <FontAwesomeIcon icon={faEnvelope} />
+                                <a href="mailto:oviedojonathan2001@gmail.com" className="contact-link">
+                                    oviedojonathan2001@gmail.com
                                 </a>
                             </div>
                             <div className="contact-info-item">
-                                <i className="fas fa-phone"></i>
-                                <a href="tel:+593XXXXXXXXX" className="contact-link">
-                                    +593 XX XXX XXXX
+                                <FontAwesomeIcon icon={faPhone} />
+                                <a href="tel:+573016643479" className="contact-link">
+                                    +57 301 664 3479
                                 </a>
                             </div>
                             <div className="contact-info-item">
-                                <i className="fas fa-map-marker-alt"></i>
-                                <span className="contact-text">Ecuador</span>
+                                <FontAwesomeIcon icon={faMapMarkerAlt} />
+                                <span className="contact-text">Cali, Colombia</span>
                             </div>
                         </div>
                     </div>
 
                     <div className="footer-cta-column">
-                        <h4 className="footer-column-title">¿Trabajamos Juntos?</h4>
+                        <h4 className="footer-column-title">{t.footer.workTogether.title}</h4>
                         <p className="cta-description-text">
-                            ¿Tienes un proyecto en mente? ¡Hablemos y hagámoslo realidad!
+                            {t.footer.workTogether.description}
                         </p>
                         <div className="footer-cta-buttons">
-                            <a href="mailto:tu-email@ejemplo.com" className="footer-cta-button">
-                                <i className="fas fa-paper-plane"></i>
-                                Contactar Ahora
+                            <a href="mailto:oviedojonathan2001@gmail.com" className="footer-cta-button">
+                                <FontAwesomeIcon icon={faPaperPlane} />
+                                {t.footer.buttons.contactNow}
                             </a>
                             <button onClick={() => scrollToSection('projects')} className="footer-secondary-button">
-                                <i className="fas fa-eye"></i>
-                                Ver Proyectos
+                                <FontAwesomeIcon icon={faEye} />
+                                {t.footer.buttons.viewProjects}
                             </button>
                         </div>
                     </div>
@@ -146,7 +154,7 @@ const Footer = () => {
                 <div className="footer-bottom-section">
                     <div className="footer-copyright-text">
                         <p className="copyright-main-text">
-                            © {currentYear} Andrés Oviedo. {t.footer.rights}.
+                            © {currentYear} Jonathan Oviedo. {t.footer.rights}.
                         </p>
                         <p className="copyright-sub-text">
                             {t.footer.built}
@@ -158,7 +166,7 @@ const Footer = () => {
                         className="scroll-to-top-button"
                         aria-label="Scroll to top"
                     >
-                        <i className="fas fa-chevron-up"></i>
+                        <FontAwesomeIcon icon={faChevronUp} />
                     </button>
                 </div>
             </div>
