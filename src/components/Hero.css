@@ -123,6 +123,7 @@
     text-decoration: none;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     animation: slide-in-up 0.8s ease-out 0.8s both;
 }
