@@ -403,7 +403,42 @@
 .modal-content-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 500px;
+    min-height: 600px;
+}
+
+/* Layout para imágenes anchas (landscape) - columna */
+.modal-content-wrapper.landscape-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    min-height: 700px;
+}
+
+.modal-content-wrapper.landscape-layout .modal-image-section {
+    order: 1;
+    max-height: 400px;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+}
+
+.modal-content-wrapper.landscape-layout .modal-info-section {
+    order: 2;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* Layout para imágenes altas/cuadradas (portrait/square) - fila */
+.modal-content-wrapper.portrait-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 700px;
+}
+
+.modal-content-wrapper.portrait-layout .modal-image-section {
+    order: 1;
+}
+
+.modal-content-wrapper.portrait-layout .modal-info-section {
+    order: 2;
 }
 
 .modal-image-section {
@@ -411,14 +446,86 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 1.5rem;
+    position: relative;
+}
+
+/* Ajustes para sección de imagen en layout landscape */
+.landscape-layout .modal-image-section {
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Ajustes para sección de imagen en layout portrait */
+.portrait-layout .modal-image-section {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    justify-content: flex-start;
+}
+
+.modal-image-section::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background: linear-gradient(90deg, transparent, rgba(248, 249, 250, 0.8));
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-image-section:hover::after {
+    opacity: 1;
+}
+
+.modal-image-section::-webkit-scrollbar {
+    height: 8px;
+}
+
+.modal-image-section::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.modal-image-section::-webkit-scrollbar-thumb {
+    background: rgba(38, 163, 212, 0.5);
+    border-radius: 4px;
+}
+
+.modal-image-section::-webkit-scrollbar-thumb:hover {
+    background: rgba(38, 163, 212, 0.7);
 }
 
 .modal-project-image {
-    max-width: 100%;
-    max-height: 300px;
+    width: 100%;
+    max-height: 450px;
+    object-fit: contain;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Ajustes para imagen en layout landscape */
+.landscape-layout .modal-project-image {
+    max-height: 350px;
+    width: 100%;
+}
+
+/* Ajustes para imagen en layout portrait */
+.portrait-layout .modal-project-image {
+    max-height: 900px;
+    width: 100%;
+}
+
+.modal-project-image:active {
+    cursor: grabbing;
+}
+
+.modal-project-image:hover {
+    transform: scale(1.02);
 }
 
 .modal-info-section {
@@ -438,7 +545,7 @@
     font-weight: 700;
     color: #322C86;
     margin: 0 0 1rem 0;
-}
+}.modal-project-image
 
 .modal-project-meta {
     display: flex;
@@ -558,6 +665,10 @@
     color: white;
 }
 
+.modal-action-button.primary-action{
+        margin-left: 1rem;
+    }
+
 /* Responsive Design */
 
 /* Large Desktop */
@@ -572,6 +683,14 @@
 
     .projects-grid-container {
         grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    }
+
+    .modal-content-wrapper {
+        min-height: 650px;
+    }
+
+    .modal-project-image {
+        max-height: 500px;
     }
 }
 
@@ -594,16 +713,41 @@
         gap: 1.5rem;
     }
 
-    .modal-content-wrapper {
+    .modal-content-wrapper,
+    .modal-content-wrapper.landscape-layout,
+    .modal-content-wrapper.portrait-layout {
         grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
     }
 
-    .modal-image-section {
+    .modal-image-section,
+    .landscape-layout .modal-image-section,
+    .portrait-layout .modal-image-section {
         order: 1;
+        min-height: 300px;
+        padding: 1.5rem;
+        justify-content: center;
+        overflow: hidden;
     }
 
-    .modal-info-section {
+    .modal-project-image,
+    .landscape-layout .modal-project-image,
+    .portrait-layout .modal-project-image {
+        max-height: 280px;
+        width: 100%;
+    }
+
+    .modal-info-section,
+    .landscape-layout .modal-info-section,
+    .portrait-layout .modal-info-section {
         order: 2;
+        max-height: none;
+    }
+
+    /* Asegurar que en tablet también no hay limitación de altura para landscape */
+    .modal-content-wrapper.landscape-layout .modal-info-section {
+        max-height: none;
+        overflow-y: visible;
     }
 }
 
@@ -672,8 +816,32 @@
         padding: 1rem;
     }
 
-    .modal-content-wrapper {
+    .modal-content-wrapper,
+    .modal-content-wrapper.landscape-layout,
+    .modal-content-wrapper.portrait-layout {
         display: block;
+    }
+
+    /* Quitar limitaciones de altura en móviles para landscape */
+    .modal-content-wrapper.landscape-layout .modal-info-section {
+        max-height: none;
+        overflow-y: visible;
+    }
+
+    .modal-image-section,
+    .landscape-layout .modal-image-section,
+    .portrait-layout .modal-image-section {
+        padding: 1rem;
+        min-height: 220px;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .modal-project-image,
+    .landscape-layout .modal-project-image,
+    .portrait-layout .modal-project-image {
+        max-height: 200px;
+        width: 100%;
     }
 
     .modal-info-section {
@@ -682,6 +850,16 @@
 
     .modal-project-title {
         font-size: 1.5rem;
+    }
+
+    .modal-action-button{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .modal-action-button.primary-action{
+        margin-top: 1rem;
+        margin-left: 0;
     }
 }
 
@@ -723,6 +901,12 @@
 
     .modal-info-section {
         padding: 1rem;
+    }
+
+    /* Quitar limitaciones de altura en small mobile para landscape también */
+    .modal-content-wrapper.landscape-layout .modal-info-section {
+        max-height: none;
+        overflow-y: visible;
     }
 
     .modal-project-title {

@@ -194,13 +194,15 @@
     padding: 2.5rem;
     border: 1px solid rgba(38, 163, 212, 0.1);
     opacity: 0;
+    visibility: hidden;
     transform: translateX(50px);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1), height 0.3s ease;
     pointer-events: none;
 }
 
 .detail-active {
     opacity: 1;
+    visibility: visible;
     transform: translateX(0);
     pointer-events: all;
     box-shadow: 0 20px 60px rgba(38, 163, 212, 0.1);
@@ -529,7 +531,7 @@
 /* Mobile Styles */
 @media (max-width: 768px) {
     .experience-timeline-section {
-        padding: 4rem 0;
+        padding: 2.5rem 0;
     }
 
     .experience-container-wrapper {
@@ -537,7 +539,7 @@
     }
 
     .experience-header-section {
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
     }
 
     .section-main-title {
@@ -550,7 +552,7 @@
 
     .experience-content-layout {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
     }
 
     .experience-navigation-panel {
@@ -558,6 +560,7 @@
         flex-direction: row;
         overflow-x: auto;
         padding-bottom: 1rem;
+        margin-top: 1rem;
     }
 
     .experience-navigation-panel::before {
@@ -576,13 +579,25 @@
 
     .experience-detail-card {
         position: relative;
-        padding: 1.5rem;
+        padding: 1.2rem;
+        min-height: auto;
+        height: 0;
+        overflow: hidden;
+        margin-bottom: 0;
+    }
+
+    .experience-detail-card.detail-active {
+        height: auto;
+        overflow: visible;
+        margin-bottom: 1rem;
     }
 
     .experience-header-info {
         flex-direction: column;
         gap: 1rem;
         align-items: flex-start;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
     }
 
     .period-type-section {
@@ -595,7 +610,7 @@
 
     .technologies-achievements-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1rem;
     }
 
     .stats-cards-grid {
@@ -604,18 +619,38 @@
     }
 
     .stat-card-item {
-        padding: 1.5rem 1rem;
+        padding: 1.2rem 1rem;
+    }
+
+    /* Reduce stats section spacing on mobile */
+    .experience-stats-section {
+        margin-top: 2rem;
+    }
+
+    /* Reduce spacing in individual sections */
+    .experience-description-section,
+    .responsibilities-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .technologies-used-section,
+    .achievements-section {
+        padding: 1rem;
     }
 }
 
 /* Small Mobile */
 @media (max-width: 480px) {
     .experience-timeline-section {
-        padding: 3rem 0;
+        padding: 2rem 0;
     }
 
     .experience-container-wrapper {
         padding: 0 0.75rem;
+    }
+
+    .experience-header-section {
+        margin-bottom: 1.5rem;
     }
 
     .section-main-title {
@@ -626,12 +661,31 @@
         font-size: 0.95rem;
     }
 
+    .experience-content-layout {
+        gap: 1rem;
+    }
+
     .experience-detail-card {
         padding: 1rem;
+        height: 0;
+        overflow: hidden;
+        margin-bottom: 0;
+    }
+
+    .experience-detail-card.detail-active {
+        height: auto;
+        overflow: visible;
+        margin-bottom: 1rem;
+    }
+
+    .experience-header-info {
+        margin-bottom: 1rem;
+        padding-bottom: 0.8rem;
     }
 
     .position-main-title {
         font-size: 1.3rem;
+        margin-bottom: 0.8rem;
     }
 
     .nav-experience-item {
@@ -649,5 +703,28 @@
 
     .nav-period-text {
         font-size: 0.75rem;
+    }
+
+    /* Further reduce spacing for small mobile */
+    .experience-stats-section {
+        margin-top: 1.5rem;
+    }
+
+    .experience-description-section,
+    .responsibilities-section {
+        margin-bottom: 1rem;
+    }
+
+    .technologies-achievements-grid {
+        gap: 0.8rem;
+    }
+
+    .technologies-used-section,
+    .achievements-section {
+        padding: 0.8rem;
+    }
+
+    .stat-card-item {
+        padding: 1rem 0.8rem;
     }
 }

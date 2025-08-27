@@ -22,6 +22,7 @@ const Projects = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [selectedProject, setSelectedProject] = useState(null);
+    const [imageLayout, setImageLayout] = useState('portrait'); // 'landscape' or 'portrait'
     const sectionRef = useRef(null);
 
     useEffect(() => {
@@ -57,10 +58,20 @@ const Projects = () => {
     const openProjectModal = (project) => {
         setSelectedProject(project);
         document.body.style.overflow = 'hidden';
+        
+        // Detectar orientación de la imagen
+        const img = new Image();
+        img.onload = () => {
+            const aspectRatio = img.width / img.height;
+            // Si la imagen es más ancha que alta (aspect ratio > 1.3), usar layout landscape
+            setImageLayout(aspectRatio > 1.3 ? 'landscape' : 'portrait');
+        };
+        img.src = project.image;
     };
 
     const closeProjectModal = () => {
         setSelectedProject(null);
+        setImageLayout('portrait'); // Reset a portrait por defecto
         document.body.style.overflow = 'unset';
     };
 
@@ -179,7 +190,7 @@ const Projects = () => {
                                 <FontAwesomeIcon icon={faTimes} />
                             </button>
 
-                            <div className="modal-content-wrapper">
+                            <div className={`modal-content-wrapper ${imageLayout}-layout`}>
                                 <div className="modal-image-section">
                                     <img src={selectedProject.image} alt={selectedProject.title} className="modal-project-image" />
                                 </div>
