@@ -58,15 +58,27 @@ const Contact = () => {
 
         try {
             // Configuración de EmailJS
-            const serviceID = 'YOUR_SERVICE_ID'; // Reemplaza con tu Service ID
-            const templateID = 'YOUR_TEMPLATE_ID'; // Reemplaza con tu Template ID
-            const publicKey = 'YOUR_PUBLIC_KEY'; // Reemplaza con tu Public Key
+            const serviceID = 'service_s0c2e5w';
+            const templateID = 'template_a343c5h';
+            const publicKey = 'yHE_T7SENJdKd_roU';
+
+            // Detectar idioma para el asunto
+            const currentLanguage = t.contact.title.includes('Contact') ? 'en' : 'es';
+            const subject = currentLanguage === 'es' ? 'Solicitud de contacto' : 'Contact Request';
 
             const templateParams = {
-                from_name: formData.name,
-                from_email: formData.email,
+                title: subject,
+                name: formData.name,
+                email: formData.email,
                 message: formData.message,
-                to_email: 'oviedojonathan2001@gmail.com'
+                time: new Date().toLocaleString('es-CO', {
+                    timeZone: 'America/Bogota',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
             };
 
             await emailjs.send(serviceID, templateID, templateParams, publicKey);
@@ -86,21 +98,21 @@ const Contact = () => {
         {
             icon: faEnvelope,
             title: t.contact.email,
-            value: 'oviedojonathan2001@gmail.com', // Cambia por tu email real
+            value: 'oviedojonathan2001@gmail.com', 
             link: 'mailto:oviedojonathan2001@gmail.com',
             color: '#C03C84'
         },
         {
             icon: faPhone,
             title: t.contact.phone,
-            value: '+57 301 664 3479', // Cambia por tu teléfono real
+            value: '+57 301 664 3479', 
             link: 'tel:+573016643479',
             color: '#26A3D4'
         },
         {
             icon: faMapMarkedAlt,
             title: t.contact.location,
-            value: 'Cali, Colombia', // Cambia por tu ubicación real
+            value: 'Cali, Colombia', 
             link: '#',
             color: '#578828'
         }
@@ -110,25 +122,25 @@ const Contact = () => {
         {
             name: 'GitHub',
             icon: faGithub,
-            url: 'https://github.com/andres0v13d0', // Cambia por tu GitHub
+            url: 'https://github.com/andres0v13d0', 
             color: '#333333'
         },
         {
             name: 'LinkedIn',
             icon: faLinkedinIn,
-            url: 'https://linkedin.com/in/andres0viedo', // Cambia por tu LinkedIn
+            url: 'https://linkedin.com/in/andres0viedo', 
             color: '#0077B5'
         },
         {
             name: 'WhatsApp',
             icon: faWhatsapp,
-            url: 'https://wa.me/573016643479', // Cambia por tu WhatsApp
+            url: 'https://wa.me/573016643479', 
             color: '#25D366'
         },
         {
             name: 'Email',
             icon: faEnvelope,
-            url: 'mailto:oviedojonathan2001@gmail.com', // Cambia por tu email
+            url: 'mailto:oviedojonathan2001@gmail.com', 
             color: '#C03C84'
         }
     ];
