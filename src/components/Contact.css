@@ -1,0 +1,722 @@
+/* Contact Section - Fully Responsive */
+.contact-section-container {
+    padding: 6rem 0;
+    background: linear-gradient(135deg,
+            rgba(192, 60, 132, 0.02) 0%,
+            rgba(255, 255, 255, 1) 50%,
+            rgba(87, 136, 40, 0.02) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-section-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(192, 60, 132, 0.3) 50%,
+            transparent 100%);
+}
+
+.contact-wrapper-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Header Section */
+.contact-header-section {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-main-title {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #322C86;
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+}
+
+.title-underline-accent {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #C03C84, #578828);
+    border-radius: 2px;
+    margin: 0 auto 2rem auto;
+    position: relative;
+}
+
+.title-underline-accent::after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background: #26A3D4;
+    border-radius: 50%;
+}
+
+.section-subtitle-text {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #666;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Contact Content Grid */
+.contact-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Contact Info Container */
+.contact-info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.contact-intro-section {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(38, 163, 212, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-intro-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #26A3D4, #C03C84, #578828);
+}
+
+.intro-title-text {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #322C86;
+    margin: 0 0 1rem 0;
+}
+
+.intro-description-text {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #666;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Contact Details List */
+.contact-details-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    border: 1px solid rgba(38, 163, 212, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    animation: contact-slide-in 0.8s ease-out forwards;
+}
+
+.contact-detail-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 8px 25px rgba(38, 163, 212, 0.15);
+    border-color: rgba(38, 163, 212, 0.3);
+}
+
+.contact-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.contact-detail-content {
+    flex: 1;
+}
+
+.contact-detail-title {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #322C86;
+    margin: 0 0 0.3rem 0;
+}
+
+.contact-detail-value {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-detail-value:hover {
+    color: #26A3D4;
+}
+
+/* Social Links Section */
+.social-links-section {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(38, 163, 212, 0.1);
+}
+
+.social-section-title {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #322C86;
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+}
+
+.social-links-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.social-link-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(38, 163, 212, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--social-color);
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    opacity: 0;
+    animation: social-bounce-in 0.6s ease-out forwards;
+}
+
+.social-link-button:hover {
+    background: var(--social-color);
+    color: white;
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border-color: var(--social-color);
+}
+
+.social-tooltip {
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--social-color);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.social-link-button:hover .social-tooltip {
+    opacity: 1;
+}
+
+/* Contact Form Container */
+.contact-form-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 2.5rem;
+    border: 1px solid rgba(38, 163, 212, 0.1);
+    box-shadow: 0 20px 60px rgba(38, 163, 212, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-form-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #C03C84, #26A3D4, #578828);
+}
+
+.form-header-section {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.form-title-text {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #322C86;
+    margin: 0 0 0.5rem 0;
+}
+
+.form-subtitle-text {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #666;
+    margin: 0;
+}
+
+/* Form Elements */
+.contact-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-input-label {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #322C86;
+}
+
+.form-input-field,
+.form-textarea-field {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1rem;
+    padding: 1rem 1.2rem;
+    border: 2px solid rgba(38, 163, 212, 0.2);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #322C86;
+    transition: all 0.3s ease;
+}
+
+.form-input-field:focus,
+.form-textarea-field:focus {
+    outline: none;
+    border-color: #26A3D4;
+    box-shadow: 0 0 0 3px rgba(38, 163, 212, 0.1);
+    background: white;
+}
+
+.form-textarea-field {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-submit-button {
+    background: linear-gradient(135deg, #26A3D4, #C03C84);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 1rem 2rem;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.form-submit-button:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(38, 163, 212, 0.3);
+}
+
+.form-submit-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.form-status-message {
+    padding: 1rem;
+    border-radius: 12px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.status-success {
+    background: rgba(87, 136, 40, 0.1);
+    color: #578828;
+    border: 1px solid rgba(87, 136, 40, 0.3);
+}
+
+.status-error {
+    background: rgba(192, 60, 132, 0.1);
+    color: #C03C84;
+    border: 1px solid rgba(192, 60, 132, 0.3);
+}
+
+/* CTA Section */
+.contact-cta-section {
+    background: linear-gradient(135deg, #322C86, #26A3D4);
+    border-radius: 25px;
+    padding: 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-cta-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: cta-glow 8s ease-in-out infinite;
+}
+
+.cta-content-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-title-text {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 1rem 0;
+}
+
+.cta-description-text {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 2rem 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.cta-primary-button,
+.cta-secondary-button {
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cta-primary-button {
+    background: white;
+    color: #322C86;
+    border: 2px solid white;
+}
+
+.cta-primary-button:hover {
+    background: transparent;
+    color: white;
+    transform: translateY(-3px);
+}
+
+.cta-secondary-button {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.cta-secondary-button:hover {
+    background: white;
+    color: #322C86;
+    transform: translateY(-3px);
+}
+
+/* Responsive Design */
+
+/* Large Desktop */
+@media (min-width: 1400px) {
+    .section-main-title {
+        font-size: 3.5rem;
+    }
+
+    .section-subtitle-text {
+        font-size: 1.3rem;
+    }
+
+    .cta-title-text {
+        font-size: 2.5rem;
+    }
+}
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+    .contact-wrapper-content {
+        padding: 0 1.5rem;
+    }
+
+    .contact-content-grid {
+        gap: 3rem;
+    }
+
+    .section-main-title {
+        font-size: 2.5rem;
+    }
+
+    .section-subtitle-text {
+        font-size: 1.1rem;
+    }
+
+    .contact-form-container {
+        padding: 2rem;
+    }
+
+    .cta-title-text {
+        font-size: 2rem;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .contact-section-container {
+        padding: 4rem 0;
+    }
+
+    .contact-wrapper-content {
+        padding: 0 1rem;
+    }
+
+    .contact-header-section {
+        margin-bottom: 3rem;
+    }
+
+    .section-main-title {
+        font-size: 2.2rem;
+    }
+
+    .section-subtitle-text {
+        font-size: 1rem;
+    }
+
+    .contact-content-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .contact-info-container {
+        gap: 2rem;
+    }
+
+    .contact-intro-section {
+        padding: 1.5rem;
+    }
+
+    .intro-title-text {
+        font-size: 1.5rem;
+    }
+
+    .intro-description-text {
+        font-size: 1rem;
+    }
+
+    .contact-detail-item {
+        padding: 1.2rem;
+    }
+
+    .contact-icon-wrapper {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+
+    .social-links-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        justify-items: center;
+    }
+
+    .social-link-button {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+    }
+
+    .contact-form-container {
+        padding: 1.5rem;
+    }
+
+    .form-title-text {
+        font-size: 1.5rem;
+    }
+
+    .cta-title-text {
+        font-size: 1.8rem;
+    }
+
+    .cta-description-text {
+        font-size: 1rem;
+    }
+
+    .cta-buttons-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-primary-button,
+    .cta-secondary-button {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .contact-section-container {
+        padding: 3rem 0;
+    }
+
+    .contact-wrapper-content {
+        padding: 0 0.75rem;
+    }
+
+    .section-main-title {
+        font-size: 1.8rem;
+    }
+
+    .section-subtitle-text {
+        font-size: 0.95rem;
+    }
+
+    .contact-intro-section {
+        padding: 1rem;
+    }
+
+    .intro-title-text {
+        font-size: 1.3rem;
+    }
+
+    .contact-detail-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .social-links-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-form-container {
+        padding: 1rem;
+    }
+
+    .contact-cta-section {
+        padding: 2rem 1rem;
+    }
+
+    .cta-title-text {
+        font-size: 1.5rem;
+    }
+}
+
+/* Animation Keyframes */
+@keyframes contact-slide-in {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes social-bounce-in {
+    from {
+        opacity: 0;
+        transform: scale(0.5) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes cta-glow {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+}
